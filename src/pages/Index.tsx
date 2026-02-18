@@ -1,11 +1,46 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Star, Users, BookOpen, Award, ArrowRight, Play, CheckCircle, Quote } from "lucide-react";
+import { 
+  Star, Users, BookOpen, Award, ArrowRight, 
+  Play, CheckCircle, Quote 
+} from "lucide-react";
+
+// Assets
 import heroBg from "@/assets/hero-bg.jpg";
 import kidsLearning from "@/assets/kids-learning.jpg";
 import classroomImg from "@/assets/classroom.jpg";
 import labImg from "@/assets/lab-library.jpg";
 import playgroundImg from "@/assets/playground.jpg";
 import sportsImg from "@/assets/sports.jpg";
+
+// ── DATA CONFIGURATION ──
+
+const slides = [
+  {
+    id: 1,
+    badge: "🌟 Welcome to BrightMinds School",
+    title: "Practical teaching & Social Development",
+    desc: "We aim at success by creating skills necessary for kids to enrich & empower in studies & sports.",
+    img: heroBg,
+    align: "right", // Content on the right side
+  },
+  {
+    id: 2,
+    badge: "🚀 Future Ready Education",
+    title: "Where Every Child Shines Bright!",
+    desc: "A nurturing, joyful learning environment where curiosity is celebrated and creativity is sparked.",
+    img: kidsLearning,
+    align: "left", // Content on the left side
+  },
+  {
+    id: 3,
+    badge: "🎨 Creative Excellence",
+    title: "Unleash Your Child's Potential",
+    desc: "Combining rigorous academics with creative exploration to develop well-rounded, confident learners.",
+    img: classroomImg,
+    align: "left",
+  }
+];
 
 const stats = [
   { icon: Users, value: "2,500+", label: "Happy Students", color: "text-school-orange" },
@@ -15,10 +50,10 @@ const stats = [
 ];
 
 const facilities = [
-  { title: "Bright Classroom", img: classroomImg, color: "from-school-orange/20 to-school-yellow/10", dot: "bg-school-orange", href: "/facilities#classroom" },
-  { title: "Lab & Library", img: labImg, color: "from-school-blue/20 to-secondary/10", dot: "bg-school-blue", href: "/facilities#lab" },
-  { title: "Play Ground", img: playgroundImg, color: "from-school-green/20 to-accent/10", dot: "bg-school-green", href: "/facilities#playground" },
-  { title: "Sports Club", img: sportsImg, color: "from-school-pink/20 to-school-purple/10", dot: "bg-school-pink", href: "/facilities#sports" },
+  { title: "Bright Classroom", img: classroomImg, color: "from-school-orange/20 to-school-yellow/10", dot: "bg-school-orange", href: "/facilities/bright-classrooms" },
+  { title: "Lab & Library", img: labImg, color: "from-school-blue/20 to-secondary/10", dot: "bg-school-blue", href: "/facilities/lab-and-library" },
+  { title: "Play Ground", img: playgroundImg, color: "from-school-green/20 to-accent/10", dot: "bg-school-green", href: "/facilities/play-ground" },
+  { title: "Sports Club", img: sportsImg, color: "from-school-pink/20 to-school-purple/10", dot: "bg-school-pink", href: "/facilities/sports-club" },
 ];
 
 const programs = [
@@ -52,58 +87,99 @@ const testimonials = [
   },
 ];
 
-export default function Index() {
-  return (
-    <main>
-      {/* ── HERO ── */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/50 to-transparent" />
+// ── MAIN COMPONENT ──
 
-        {/* Decorative blobs */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-school-yellow/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-1/2 w-56 h-56 bg-school-blue/25 rounded-full blur-3xl" />
+export default function Index() {
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <main className="overflow-x-hidden">
+      {/* ── HERO CAROUSEL ── */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-foreground">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === current ? "opacity-100 z-0" : "opacity-0 -z-10"
+            }`}
+          >
+            {/* The Image must cover the full width and height */}
+            <img 
+              src={slide.img} 
+              alt="background pattern" 
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Dynamic Overlay: Darkens the side where text is located */}
+            <div className={`absolute inset-0 bg-gradient-to-r ${
+              slide.align === 'left' 
+              ? 'from-foreground/90 via-foreground/40 to-transparent' 
+              : 'from-transparent via-foreground/40 to-foreground/90'
+            }`} />
+          </div>
+        ))}
+
+        {/* Decorative Blobs (Layered above images) */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-school-yellow/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 left-1/4 w-56 h-56 bg-school-blue/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
-            <span className="badge-pill bg-school-yellow text-foreground mb-5 inline-block animate-fade-in">
-              🌟 Welcome to BrightMinds School
-            </span>
-            <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              Where Every Child{" "}
-              <span className="text-school-yellow">Shines</span>{" "}
-              Bright!
-            </h1>
-            <p className="font-body text-lg text-white/85 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              A nurturing, joyful learning environment where curiosity is celebrated, creativity is sparked, and every child reaches their full potential.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <Link
-                to="/admission"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-display font-extrabold text-base shadow-colored hover:opacity-90 hover:scale-105 transition-all duration-200"
-              >
-                <BookOpen size={18} />
-                Enroll Now
-              </Link>
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/15 backdrop-blur text-white font-display font-bold text-base border border-white/30 hover:bg-white/25 transition-all duration-200"
-              >
-                <Play size={18} />
-                Learn More
-              </Link>
+          <div className={`flex w-full ${slides[current].align === 'right' ? 'justify-end text-right' : 'justify-start text-left'}`}>
+            <div className="max-w-2xl transition-all duration-700">
+              <span key={`badge-${current}`} className="badge-pill bg-school-yellow text-foreground mb-5 inline-block animate-fade-in">
+                {slides[current].badge}
+              </span>
+              
+              <h1 key={`title-${current}`} className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                {/* Dynamically highlights specific words */}
+                {slides[current].title.split(" ").map((word, i) => (
+                   word === "Shines" || word === "Social" || word === "Potential"
+                   ? <span key={i} className="text-school-yellow"> {word} </span> 
+                   : " " + word + " "
+                ))}
+              </h1>
+
+              <p key={`desc-${current}`} className="font-body text-lg text-white/85 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                {slides[current].desc}
+              </p>
+              
+              <div key={`btns-${current}`} className={`flex flex-wrap gap-4 animate-fade-in ${slides[current].align === 'right' ? 'justify-end' : 'justify-start'}`} style={{ animationDelay: "0.3s" }}>
+                <Link to="/admission" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-display font-extrabold shadow-colored hover:scale-105 transition-all">
+                  <BookOpen size={18} /> Enroll Now
+                </Link>
+                <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/15 backdrop-blur text-white font-display font-bold border border-white/30 hover:bg-white/25 transition-all">
+                  <Play size={18} /> Learn More
+                </Link>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Carousel Indicators (The Dots) */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`h-3 rounded-full transition-all duration-300 ${
+                current === i ? "bg-school-pink w-10" : "bg-white/40 w-3 hover:bg-white/70"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Bottom wave */}
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-background" style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }} />
       </section>
 
-      {/* ── STATS ── */}
+      {/* ── STATS SECTION ── */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -123,11 +199,7 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div className="relative">
-              <img
-                src={kidsLearning}
-                alt="Kids Learning"
-                className="rounded-4xl shadow-card-lg w-full object-cover"
-              />
+              <img src={kidsLearning} alt="Kids Learning" className="rounded-4xl shadow-card-lg w-full object-cover h-[450px]" />
               <div className="absolute -bottom-6 -right-6 bg-school-yellow rounded-3xl p-5 shadow-card animate-float">
                 <div className="font-display font-extrabold text-2xl text-foreground">25+</div>
                 <div className="font-body text-xs text-foreground/70">Years of Trust</div>
@@ -150,10 +222,7 @@ export default function Index() {
                   </li>
                 ))}
               </ul>
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-display font-bold shadow-colored hover:opacity-90 hover:scale-105 transition-all duration-200"
-              >
+              <Link to="/about" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-display font-bold shadow-colored hover:opacity-90 hover:scale-105 transition-all">
                 Discover Our Story <ArrowRight size={18} />
               </Link>
             </div>
@@ -167,7 +236,6 @@ export default function Index() {
           <div className="text-center mb-14">
             <span className="badge-pill bg-school-orange/15 text-school-orange mb-4">Our Facilities</span>
             <h2 className="section-title mb-3">World-Class Learning <span className="text-secondary">Spaces</span></h2>
-            <p className="section-subtitle max-w-2xl mx-auto">Every corner of BrightMinds is designed to inspire, engage, and empower our students to grow.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {facilities.map((f) => (
@@ -183,38 +251,26 @@ export default function Index() {
               </Link>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link to="/facilities" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-secondary text-secondary font-display font-bold hover:bg-secondary hover:text-secondary-foreground transition-all duration-200">
-              View All Facilities <ArrowRight size={18} />
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* ── ADMISSION PROGRAMS ── */}
-      <section className="py-20 bg-gradient-to-br from-foreground to-foreground/90 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-school-yellow rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-school-blue rounded-full blur-3xl" />
-        </div>
+      <section className="py-20 bg-foreground relative overflow-hidden text-white">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-14">
             <span className="badge-pill bg-school-yellow/20 text-school-yellow mb-4">Admission</span>
-            <h2 className="font-display font-extrabold text-4xl text-white mb-3">Programs for <span className="text-school-yellow">Every</span> Child</h2>
-            <p className="font-body text-lg text-white/70 max-w-2xl mx-auto">From playful kindergarten to rigorous high school, we have the perfect program for your child's journey.</p>
+            <h2 className="font-display font-extrabold text-4xl mb-3">Programs for <span className="text-school-yellow">Every</span> Child</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {programs.map((p) => (
-              <div key={p.title} className="bg-white/10 backdrop-blur rounded-3xl p-7 border border-white/10 hover:bg-white/15 hover:-translate-y-2 transition-all duration-300 group">
-                <div className={`w-14 h-14 ${p.color} rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform duration-300`}>
+              <div key={p.title} className="bg-white/5 backdrop-blur rounded-3xl p-7 border border-white/10 hover:bg-white/15 hover:-translate-y-2 transition-all group">
+                <div className={`w-14 h-14 ${p.color} rounded-2xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform`}>
                   {p.icon}
                 </div>
                 <div className="font-body text-xs text-white/50 mb-2 tracking-widest uppercase">{p.age}</div>
-                <h3 className="font-display font-extrabold text-xl text-white mb-3">{p.title}</h3>
+                <h3 className="font-display font-extrabold text-xl mb-3">{p.title}</h3>
                 <p className="font-body text-sm text-white/65 leading-relaxed mb-5">{p.desc}</p>
-                <Link to="/admission" className="inline-flex items-center gap-1 font-display font-bold text-sm text-school-yellow hover:gap-2 transition-all duration-200">
-                  Learn More <ArrowRight size={14} />
-                </Link>
+              
               </div>
             ))}
           </div>
@@ -223,30 +279,20 @@ export default function Index() {
 
       {/* ── TESTIMONIALS ── */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="badge-pill bg-school-pink/15 text-school-pink mb-4">Testimonials</span>
-            <h2 className="section-title mb-3">What <span className="text-school-pink">Parents</span> Say</h2>
-            <p className="section-subtitle max-w-xl mx-auto">Hear from the families who trust BrightMinds with their most precious ones.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="container mx-auto px-4 text-center">
+           <span className="badge-pill bg-school-pink/15 text-school-pink mb-4">Testimonials</span>
+           <h2 className="section-title mb-14">What <span className="text-school-pink">Parents</span> Say</h2>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-card rounded-3xl p-7 shadow-card border border-border hover:-translate-y-1 transition-transform duration-300 relative">
-                <Quote size={36} className="text-primary/15 absolute top-5 right-5" />
-                <p className="font-body text-foreground/75 leading-relaxed mb-6 italic">"{t.text}"</p>
+              <div key={t.name} className="bg-card rounded-3xl p-7 shadow-card border border-border hover:-translate-y-1 transition-all relative">
+                <Quote size={32} className="text-primary/10 absolute top-5 right-5" />
+                <p className="font-body text-foreground/75 mb-6 italic">"{t.text}"</p>
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 ${t.color} rounded-full flex items-center justify-center font-display font-extrabold text-white text-sm`}>
-                    {t.avatar}
-                  </div>
+                  <div className={`w-12 h-12 ${t.color} rounded-full flex items-center justify-center font-display font-extrabold text-white`}>{t.avatar}</div>
                   <div>
-                    <div className="font-display font-bold text-foreground">{t.name}</div>
-                    <div className="font-body text-xs text-muted-foreground">{t.role}</div>
+                    <div className="font-display font-bold">{t.name}</div>
+                    <div className="text-xs text-muted-foreground">{t.role}</div>
                   </div>
-                </div>
-                <div className="flex gap-1 mt-4">
-                  {Array(5).fill(0).map((_, i) => (
-                    <Star key={i} size={14} className="text-school-yellow fill-school-yellow" />
-                  ))}
                 </div>
               </div>
             ))}
@@ -256,28 +302,15 @@ export default function Index() {
 
       {/* ── CTA ── */}
       <section className="py-20 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -top-20 -left-20 w-80 h-80 bg-white rounded-full" />
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white rounded-full" />
-        </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white mb-4">
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white mb-8">
             Ready to Start Your Child's Journey? 🚀
           </h2>
-          <p className="font-body text-lg text-white/80 mb-8 max-w-xl mx-auto">
-            Join the BrightMinds family today. Limited seats available for the upcoming academic year.
-          </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/admission"
-              className="px-9 py-4 rounded-full bg-white text-primary font-display font-extrabold text-base hover:scale-105 hover:shadow-lg transition-all duration-200"
-            >
+            <Link to="/admission" className="px-9 py-4 rounded-full bg-white text-primary font-display font-extrabold hover:scale-105 transition-all">
               Apply for Admission
             </Link>
-            <Link
-              to="/contact"
-              className="px-9 py-4 rounded-full border-2 border-white text-white font-display font-bold text-base hover:bg-white/15 transition-all duration-200"
-            >
+            <Link to="/contact" className="px-9 py-4 rounded-full border-2 border-white text-white font-display font-bold hover:bg-white/10 transition-all">
               Contact Us
             </Link>
           </div>

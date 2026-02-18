@@ -4,19 +4,14 @@ import { Menu, X, ChevronDown, BookOpen } from "lucide-react";
 import schoolLogo from "@/assets/school-logo.png";
 
 const facilitiesItems = [
-  { label: "Bright Classroom", href: "/facilities#classroom" },
-  { label: "Lab and Library", href: "/facilities#lab" },
-  { label: "Meeting Hall", href: "/facilities#hall" },
-  { label: "Play Ground", href: "/facilities#playground" },
-  { label: "Sports Club", href: "/facilities#sports" },
+  { label: "Bright Classroom", href: "/facilities/bright-classrooms" },
+  { label: "Lab and Library", href: "/facilities/lab-and-library" },
+  { label: "Meeting Hall", href: "/facilities/meeting-hall" },
+  { label: "Play Ground", href: "/facilities/play-ground" },
+  { label: "Sports Club", href: "/facilities/sports-club" },
 ];
 
-const admissionItems = [
-  { label: "Enrollment", href: "/admission#enrollment" },
-  { label: "High School", href: "/admission#highschool" },
-  { label: "Kindergarten", href: "/admission#kindergarten" },
-  { label: "Learning", href: "/admission#learning" },
-];
+
 
 interface DropdownProps {
   label: string;
@@ -97,7 +92,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3">
           <img src={schoolLogo} alt="BrightMinds School" className="h-12 w-12 rounded-full" />
           <div>
-            <span className="block font-display font-900 text-xl leading-tight text-primary">BrightMinds</span>
+            <span className="block font-display font-900 text-xl leading-tight text-primary">School</span>
             <span className="block font-body text-xs text-muted-foreground tracking-wide">Kids School</span>
           </div>
         </Link>
@@ -107,13 +102,14 @@ export default function Navbar() {
           <Link to="/" className={navLinkClass("/")}>Home</Link>
           <Link to="/about" className={navLinkClass("/about")}>About</Link>
           <DesktopDropdown label="Facilities" items={facilitiesItems} color="text-school-blue" />
-          <DesktopDropdown label="Admission" items={admissionItems} color="text-school-green" />
-          <Link to="/contact" className={navLinkClass("/contact")}>Contact</Link>
+          {/* <DesktopDropdown label="Admission" items={admissionItems} color="text-school-green" /> */}
+          <Link to="/admissions" className={navLinkClass("/admissions")}>Admissions</Link>
+          {/* <Link to="/contact" className={navLinkClass("/contact")}>Contact</Link> */}
         </nav>
 
         {/* CTA Button */}
         <Link
-          to="/admission"
+          to="/contact"
           className="hidden lg:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-display font-bold text-sm shadow-colored hover:opacity-90 transition-all duration-200 hover:scale-105"
         >
           <BookOpen size={16} />
@@ -158,28 +154,12 @@ export default function Navbar() {
             </div>
 
             {/* Admission dropdown mobile */}
-            <div>
-              <button
-                className="w-full flex items-center justify-between px-4 py-3 font-display font-bold text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors"
-                onClick={() => setMobileExpanded(mobileExpanded === "admission" ? null : "admission")}
-              >
-                Admission
-                <ChevronDown size={16} className={`transition-transform ${mobileExpanded === "admission" ? "rotate-180" : ""}`} />
-              </button>
-              {mobileExpanded === "admission" && (
-                <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-secondary pl-4">
-                  {admissionItems.map((item) => (
-                    <Link key={item.label} to={item.href} className="py-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors">
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Link to="/admissions" className="px-4 py-3 font-display font-bold text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors">Admissions</Link>
 
-            <Link to="/contact" className="px-4 py-3 font-display font-bold text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors">Contact</Link>
+
+            {/* <Link to="/contact" className="px-4 py-3 font-display font-bold text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors">Contact</Link> */}
             <Link
-              to="/admission"
+              to="/contact"
               className="mt-2 mx-4 py-3 text-center rounded-full bg-primary text-primary-foreground font-display font-bold text-sm shadow-colored"
             >
               Enroll Now
