@@ -23,13 +23,13 @@ const PlayGround = () => {
   return (
     <main className="">
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen md:h-[110vh] flex items-center justify-center overflow-hidden">
         <img 
           src={playgroundImg} 
           alt="School Playground" 
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-school-green/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-foreground/60 " />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <span className="badge-pill bg-white text-school-green mb-4 inline-block font-bold">
             Active Bodies, Active Minds

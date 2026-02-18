@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Star, Users, BookOpen, Award, ArrowRight, 
-  Play, CheckCircle, Quote 
+import {
+  Star, Users, BookOpen, Award, ArrowRight,
+  Play, CheckCircle, Quote
 } from "lucide-react";
 
 // Assets
@@ -12,6 +12,7 @@ import classroomImg from "@/assets/classroom.jpg";
 import labImg from "@/assets/lab-library.jpg";
 import playgroundImg from "@/assets/playground.jpg";
 import sportsImg from "@/assets/sports.jpg";
+import heroBg1 from '@/assets/home/hero-bg.jpg'
 
 // ── DATA CONFIGURATION ──
 
@@ -21,7 +22,7 @@ const slides = [
     badge: "🌟 Welcome to BrightMinds School",
     title: "Practical teaching & Social Development",
     desc: "We aim at success by creating skills necessary for kids to enrich & empower in studies & sports.",
-    img: heroBg,
+    img: heroBg1,
     align: "right", // Content on the right side
   },
   {
@@ -98,63 +99,80 @@ export default function Index() {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
     <main className="overflow-x-hidden">
       {/* ── HERO CAROUSEL ── */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-foreground">
+
+
+      <section className="relative min-h-[90vh] w-full flex items-center overflow-hidden bg-foreground py-20 md:py-0">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === current ? "opacity-100 z-0" : "opacity-0 -z-10"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100 z-0" : "opacity-0 -z-10"
+              }`}
           >
-            {/* The Image must cover the full width and height */}
-            <img 
-              src={slide.img} 
-              alt="background pattern" 
+            <img
+              src={slide.img}
+              alt="Hero Background"
               className="w-full h-full object-cover object-center"
             />
-            {/* Dynamic Overlay: Darkens the side where text is located */}
-            <div className={`absolute inset-0 bg-gradient-to-r ${
-              slide.align === 'left' 
-              ? 'from-foreground/90 via-foreground/40 to-transparent' 
-              : 'from-transparent via-foreground/40 to-foreground/90'
-            }`} />
+            {/* Overlay - Fixed to 'left' orientation for all slides */}
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/95 via-foreground/60 to-transparent" />
           </div>
         ))}
 
-        {/* Decorative Blobs (Layered above images) */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-school-yellow/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-1/4 w-56 h-56 bg-school-blue/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Decorative Blobs */}
+        <div className="hidden sm:block absolute top-10 right-10 w-72 h-72 bg-school-yellow/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="hidden sm:block absolute bottom-10 left-1/4 w-56 h-56 bg-school-blue/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className={`flex w-full ${slides[current].align === 'right' ? 'justify-end text-right' : 'justify-start text-left'}`}>
-            <div className="max-w-2xl transition-all duration-700">
-              <span key={`badge-${current}`} className="badge-pill bg-school-yellow text-foreground mb-5 inline-block animate-fade-in">
+          {/* Layout wrapper: Fixed to justify-start and text-left */}
+          <div className="flex w-full justify-start text-left">
+            <div className="max-w-2xl w-full">
+              <span
+                key={`badge-${current}`}
+                className="badge-pill bg-school-yellow text-foreground mb-4 md:mb-5 inline-block animate-fade-in text-xs md:text-sm font-bold uppercase tracking-wider"
+              >
                 {slides[current].badge}
               </span>
-              
-              <h1 key={`title-${current}`} className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-                {/* Dynamically highlights specific words */}
+
+              <h1
+                key={`title-${current}`}
+                className="font-display font-extrabold text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] mb-6 animate-fade-in"
+                style={{ animationDelay: "0.1s" }}
+              >
                 {slides[current].title.split(" ").map((word, i) => (
-                   word === "Shines" || word === "Social" || word === "Potential"
-                   ? <span key={i} className="text-school-yellow"> {word} </span> 
-                   : " " + word + " "
+                  ["Shines", "Social", "Potential"].includes(word)
+                    ? <span key={i} className="text-school-yellow"> {word} </span>
+                    : " " + word + " "
                 ))}
               </h1>
 
-              <p key={`desc-${current}`} className="font-body text-lg text-white/85 mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <p
+                key={`desc-${current}`}
+                className="font-body text-base md:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in max-w-prose"
+                style={{ animationDelay: "0.2s" }}
+              >
                 {slides[current].desc}
               </p>
-              
-              <div key={`btns-${current}`} className={`flex flex-wrap gap-4 animate-fade-in ${slides[current].align === 'right' ? 'justify-end' : 'justify-start'}`} style={{ animationDelay: "0.3s" }}>
-                <Link to="/admission" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-display font-extrabold shadow-colored hover:scale-105 transition-all">
+
+              <div
+                key={`btns-${current}`}
+                className="flex flex-wrap gap-4 animate-fade-in justify-start"
+                style={{ animationDelay: "0.3s" }}
+              >
+                <Link
+                  to="/admissions"
+                  className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-full bg-primary text-primary-foreground font-display font-extrabold shadow-lg hover:scale-105 transition-all text-sm md:text-base"
+                >
                   <BookOpen size={18} /> Enroll Now
                 </Link>
-                <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/15 backdrop-blur text-white font-display font-bold border border-white/30 hover:bg-white/25 transition-all">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-full bg-white/10 backdrop-blur-md text-white font-display font-bold border border-white/20 hover:bg-white/20 transition-all text-sm md:text-base"
+                >
                   <Play size={18} /> Learn More
                 </Link>
               </div>
@@ -162,21 +180,23 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Carousel Indicators (The Dots) */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        {/* Indicators */}
+        <div className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                current === i ? "bg-school-pink w-10" : "bg-white/40 w-3 hover:bg-white/70"
-              }`}
+              className={`h-2 md:h-3 rounded-full transition-all duration-300 ${current === i ? "bg-school-pink w-8 md:w-10" : "bg-white/40 w-2 md:w-3 hover:bg-white/70"
+                }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-background" style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }} />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-background"
+          style={{ clipPath: "ellipse(60% 100% at 50% 100%)" }}
+        />
       </section>
 
       {/* ── STATS SECTION ── */}
@@ -270,7 +290,7 @@ export default function Index() {
                 <div className="font-body text-xs text-white/50 mb-2 tracking-widest uppercase">{p.age}</div>
                 <h3 className="font-display font-extrabold text-xl mb-3">{p.title}</h3>
                 <p className="font-body text-sm text-white/65 leading-relaxed mb-5">{p.desc}</p>
-              
+
               </div>
             ))}
           </div>
@@ -280,9 +300,9 @@ export default function Index() {
       {/* ── TESTIMONIALS ── */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 text-center">
-           <span className="badge-pill bg-school-pink/15 text-school-pink mb-4">Testimonials</span>
-           <h2 className="section-title mb-14">What <span className="text-school-pink">Parents</span> Say</h2>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <span className="badge-pill bg-school-pink/15 text-school-pink mb-4">Testimonials</span>
+          <h2 className="section-title mb-14">What <span className="text-school-pink">Parents</span> Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {testimonials.map((t) => (
               <div key={t.name} className="bg-card rounded-3xl p-7 shadow-card border border-border hover:-translate-y-1 transition-all relative">
                 <Quote size={32} className="text-primary/10 absolute top-5 right-5" />

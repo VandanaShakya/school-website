@@ -33,7 +33,7 @@ const SportsClub = () => {
         />
         
         {/* Darker, high-contrast overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-school-blue/80 via-school-blue/60 to-foreground/90 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-foreground/60" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="max-w-4xl mx-auto">

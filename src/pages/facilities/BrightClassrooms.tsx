@@ -12,7 +12,7 @@ const BrightClassrooms = () => {
   return (
     <main className="">
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen md:h-[110vh] flex items-center justify-center overflow-hidden">
         <img 
           src={classroomImg} 
           alt="Modern Classroom" 

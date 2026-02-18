@@ -52,7 +52,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div className="relative">
               <img src={kidsLearning} alt="Kids Learning at BrightMinds" className="rounded-4xl shadow-card-lg w-full object-cover" />
-              <div className="absolute -bottom-6 -right-6 bg-primary rounded-3xl p-6 shadow-colored animate-float text-center">
+              <div className="absolute -bottom-6 -right-4 bg-primary rounded-3xl p-6 shadow-colored animate-float text-center">
                 <Award size={32} className="text-white mx-auto mb-1" />
                 <div className="font-display font-extrabold text-2xl text-white">A+</div>
                 <div className="font-body text-xs text-white/70">Rated School</div>

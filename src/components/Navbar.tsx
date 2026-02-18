@@ -98,14 +98,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
-          <Link to="/" className={navLinkClass("/")}>Home</Link>
-          <Link to="/about" className={navLinkClass("/about")}>About</Link>
-          <DesktopDropdown label="Facilities" items={facilitiesItems} color="text-school-blue" />
-          {/* <DesktopDropdown label="Admission" items={admissionItems} color="text-school-green" /> */}
-          <Link to="/admissions" className={navLinkClass("/admissions")}>Admissions</Link>
-          {/* <Link to="/contact" className={navLinkClass("/contact")}>Contact</Link> */}
-        </nav>
+          <nav className="hidden lg:flex items-center gap-7 h-full">
+            <Link to="/" className={navLinkClass("/")}>Home</Link>
+            <Link to="/about" className={navLinkClass("/about")}>About</Link>
+            <DesktopDropdown label="Facilities" items={facilitiesItems} color="text-school-blue" />
+            {/* <DesktopDropdown label="Admission" items={admissionItems} color="text-school-green" /> */}
+            <Link to="/admissions" className={navLinkClass("/admissions")}>Admissions</Link>
+            {/* <Link to="/contact" className={navLinkClass("/contact")}>Contact</Link> */}
+          </nav>
 
         {/* CTA Button */}
         <Link
@@ -143,7 +143,7 @@ export default function Navbar() {
                 <ChevronDown size={16} className={`transition-transform ${mobileExpanded === "facilities" ? "rotate-180" : ""}`} />
               </button>
               {mobileExpanded === "facilities" && (
-                <div className="ml-4 mt-1 flex flex-col gap-1 border-l-2 border-primary pl-4">
+                <div className="ml-4 mt-5 flex flex-col gap-1 border-l-2 border-primary pl-4">
                   {facilitiesItems.map((item) => (
                     <Link key={item.label} to={item.href} className="py-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors">
                       {item.label}
