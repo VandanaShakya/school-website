@@ -53,7 +53,7 @@ function DesktopDropdown({ label, items, color }: DropdownProps) {
         />
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-2 w-52 bg-card rounded-2xl shadow-card-lg border border-border z-50 overflow-hidden animate-slide-down">
+        <div className="absolute top-full left-0 mt-0 w-52 bg-card rounded-2xl shadow-card-lg border border-border z-50 overflow-hidden animate-slide-down">
           {items.map((item) => (
             <Link
               key={item.label}
