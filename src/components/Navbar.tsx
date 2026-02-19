@@ -90,7 +90,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={schoolLogo} alt="BrightMinds School" className="h-12 w-12 rounded-full" />
+          <img src={schoolLogo} alt="Kids SchoolSchool" className="h-12 w-12 rounded-full" />
           <div>
             <span className="block font-display font-900 text-xl leading-tight text-primary">KidsSchool</span>
             {/* <span className="block font-body text-xs text-muted-foreground tracking-wide">Kids School</span> */}

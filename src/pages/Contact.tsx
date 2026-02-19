@@ -176,7 +176,7 @@ export default function Contact() {
               {/* Map */}
               <div className="flex-1 rounded-4xl overflow-hidden shadow-card border border-border min-h-72">
                 <iframe
-                  title="BrightMinds School Location"
+                  title="Kids SchoolSchool Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2sFinancial+District%2C+New+York%2C+NY!5e0!3m2!1sen!2sus!4v1477580389969"
                   className="w-full h-full min-h-72"
                   allowFullScreen

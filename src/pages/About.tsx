@@ -113,7 +113,7 @@ export default function About() {
               </div>
             </div>
             <div className="relative">
-              <img src={classroomImg} alt="BrightMinds Classroom" className="rounded-4xl shadow-card-lg w-full object-cover" />
+              <img src={classroomImg} alt="Kids SchoolClassroom" className="rounded-4xl shadow-card-lg w-full object-cover" />
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function About() {
             ))}
           </div>
           <div className="rounded-3xl overflow-hidden shadow-card-lg">
-            <img src={staffImg} alt="BrightMinds Staff Team" className="w-full h-full object-cover object-top" />
+            <img src={staffImg} alt="Kids SchoolStaff Team" className="w-full h-full object-cover object-top" />
           </div>
         </div>
       </section>

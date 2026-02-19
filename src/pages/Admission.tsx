@@ -12,7 +12,7 @@ const programs = [
     border: "border-school-orange",
     badge: "bg-school-orange/15 text-school-orange",
     steps: ["Fill the online application form", "Submit required documents", "Schedule an assessment", "Receive admission decision", "Complete fee payment"],
-    desc: "Begin your child's journey at BrightMinds with our streamlined enrollment process. Our admissions team is here to guide you every step of the way.",
+    desc: "Begin your child's journey at Kids Schoolwith our streamlined enrollment process. Our admissions team is here to guide you every step of the way.",
     duration: "Process takes 2–3 weeks",
     deadline: "Applications open year-round",
   },
@@ -77,7 +77,7 @@ export default function Admission() {
             Start Your <span className="text-primary">Journey</span> With Us
           </h1>
           <p className="font-body text-xl text-muted-foreground max-w-2xl mx-auto">
-            We welcome students of all backgrounds to join the BrightMinds family. Find the perfect program below.
+            We welcome students of all backgrounds to join the Kids Schoolfamily. Find the perfect program below.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-background" style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }} />
@@ -173,7 +173,7 @@ export default function Admission() {
             Secure Your Child's Seat Today! 🎒
           </h2>
           <p className="font-body text-white/80 mb-8 max-w-xl mx-auto">
-            Limited spots available. Don't wait — give your child the gift of a BrightMinds education.
+            Limited spots available. Don't wait — give your child the gift of a Kids Schooleducation.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact" className="px-9 py-4 rounded-full bg-white text-primary font-display font-extrabold hover:scale-105 hover:shadow-lg transition-all duration-200">

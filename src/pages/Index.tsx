@@ -19,7 +19,7 @@ import heroBg1 from '@/assets/home/hero-bg.jpg'
 const slides = [
   {
     id: 1,
-    badge: "🌟 Welcome to BrightMinds School",
+    badge: "🌟 Welcome to Kids SchoolSchool",
     title: "Practical teaching & Social Development",
     desc: "We aim at success by creating skills necessary for kids to enrich & empower in studies & sports.",
     img: heroBg1,
@@ -68,7 +68,7 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "Parent of Grade 3 Student",
-    text: "BrightMinds has transformed my daughter's love for learning. The teachers are exceptional and the environment is so nurturing!",
+    text: "Kids Schoolhas transformed my daughter's love for learning. The teachers are exceptional and the environment is so nurturing!",
     avatar: "SJ",
     color: "bg-school-orange",
   },
@@ -232,7 +232,7 @@ export default function Index() {
               <span className="badge-pill bg-school-blue/15 text-school-blue mb-4">About BrightMinds</span>
               <h2 className="section-title mb-5">A Place Where Learning Meets <span className="text-primary">Fun</span></h2>
               <p className="section-subtitle mb-6">
-                Founded in 1999, BrightMinds Kids School has been a beacon of excellence in education. We combine rigorous academics with creative exploration to develop well-rounded, confident young learners.
+                Founded in 1999, Kids SchoolKids School has been a beacon of excellence in education. We combine rigorous academics with creative exploration to develop well-rounded, confident young learners.
               </p>
               <ul className="space-y-3 mb-8">
                 {["Child-centered learning approach", "Experienced & passionate educators", "State-of-the-art facilities", "Inclusive and safe environment"].map((item) => (

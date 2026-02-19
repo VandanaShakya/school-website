@@ -28,7 +28,7 @@ const SportsClub = () => {
        
         <img 
           src={sportsImg} 
-          alt="BrightMinds Sports Academy" 
+          alt="Kids SchoolSports Academy" 
           className="absolute inset-0 w-full h-full object-cover object-center scale-105 animate-slow-zoom"
         />
         
