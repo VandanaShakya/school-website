@@ -34,24 +34,13 @@ const Footer = () => {
           <div className="flex flex-col space-y-6">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-white/20 rounded-lg text-xl md:text-2xl">🏫</div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Pallikoodam</h2>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">KidsSchool</h2>
             </div>
             <p className="text-sm leading-relaxed text-indigo-100 max-w-sm">
               Empowering students through innovative learning and global perspectives. 
               Nurturing the leaders of tomorrow.
             </p>
-            <div className="flex flex-wrap gap-3">
-              {[
-                { icon: <Facebook size={18} />, bg: 'bg-blue-800' },
-                { icon: <Globe size={18} />, bg: 'bg-pink-500' },
-                { icon: <Twitter size={18} />, bg: 'bg-sky-400' },
-                { icon: <span className="text-xs font-bold">G+</span>, bg: 'bg-orange-600' }
-              ].map((social, i) => (
-                <div key={i} className={`${social.bg} w-9 h-9 flex items-center justify-center rounded cursor-pointer hover:scale-110 transition-all`}>
-                  {social.icon}
-                </div>
-              ))}
-            </div>
+           
           </div>
 
           {/* Column 2: Links */}
@@ -83,7 +72,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Posts */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <h3 className="text-xl font-bold mb-6 md:mb-8 border-b border-white/10 pb-2 w-fit">Recent Posts</h3>
             <div className="space-y-6">
               {[
@@ -99,7 +88,7 @@ const Footer = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Column 4: Contact */}
           <div className="flex flex-col">
@@ -120,6 +109,32 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
+         
+          <div className="flex flex-col gap-4">
+
+<h2 className="text-lg font-bold text-white">
+  GET IN TOUCH
+</h2>
+
+<div className="flex flex-wrap gap-3">
+  {[
+    { icon: <Facebook size={18} />, bg: 'bg-blue-800' },
+    { icon: <Globe size={18} />, bg: 'bg-pink-500' },
+    { icon: <Twitter size={18} />, bg: 'bg-sky-400' },
+    { icon: <span className="text-xs font-bold">G+</span>, bg: 'bg-orange-600' }
+  ].map((social, i) => (
+    <div
+      key={i}
+      className={`${social.bg} w-9 h-9 flex items-center justify-center rounded cursor-pointer hover:scale-110 transition-all`}
+    >
+      {social.icon}
+    </div>
+  ))}
+</div>
+
+</div>
+
 
         </div>
 

@@ -327,7 +327,7 @@ export default function Index() {
             Ready to Start Your Child's Journey? 🚀
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/admission" className="px-9 py-4 rounded-full bg-white text-primary font-display font-extrabold hover:scale-105 transition-all">
+            <Link to="/contact" className="px-9 py-4 rounded-full bg-white text-primary font-display font-extrabold hover:scale-105 transition-all">
               Apply for Admission
             </Link>
             <Link to="/contact" className="px-9 py-4 rounded-full border-2 border-white text-white font-display font-bold hover:bg-white/10 transition-all">

@@ -182,9 +182,22 @@ const PlayGround = () => {
       <section className="py-20 bg-background text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-display font-bold text-3xl mb-8">Want your child to be part of the winning team?</h2>
-          <Link to="/admission" className="inline-flex items-center gap-2 px-10 py-5 rounded-full bg-school-blue text-white font-display font-extrabold text-lg hover:shadow-colored transition-all">
-            Join Our School <ArrowRight size={20} />
-          </Link>
+          <Link
+  to="/contact"
+  className="
+    inline-flex items-center justify-center gap-2 
+    px-6 py-3 text-base
+    sm:px-12 sm:py-5 sm:text-lg
+    lg:px-20 lg:py-6 lg:text-xl
+    rounded-full 
+    bg-school-blue text-white 
+    font-display font-extrabold 
+    hover:shadow-colored transition-all
+  "
+>
+  Join Our School <ArrowRight size={20} />
+</Link>
+
         </div>
       </section>
     </main>

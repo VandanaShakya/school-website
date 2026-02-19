@@ -51,7 +51,8 @@ const SportsClub = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-4 py-2 text-sm
+           <Link to="/contact">
+           <button className="px-4 py-2 text-sm
                      sm:px-8 sm:py-3 sm:text-base
                      bg-school-yellow text-foreground 
                      font-display font-black 
@@ -59,8 +60,11 @@ const SportsClub = () => {
                      transition-all shadow-xl whitespace-nowrap">
     JOIN THE SQUAD
   </button>
+          
+           </Link>
 
-  <button className="px-4 py-2 text-sm
+           <Link to="/contact">
+           <button className="px-4 py-2 text-sm
                      sm:px-8 sm:py-3 sm:text-base
                      border-2 border-white text-white 
                      font-display font-bold 
@@ -69,6 +73,9 @@ const SportsClub = () => {
     VIEW FIXTURES
   </button>
 
+           </Link>
+
+  
             </div>
           </div>
         </div>
@@ -236,9 +243,23 @@ const SportsClub = () => {
         <div className="container mx-auto px-4">
           <h2 className="font-display font-extrabold text-4xl mb-6">Ready to Join the Academy?</h2>
           <p className="font-body text-lg mb-8 max-w-xl mx-auto">Trials for the new season are now open. Enroll your child in the Sports Club today!</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-foreground text-white font-display font-extrabold text-lg hover:scale-105 transition-all shadow-xl">
-            Register for Trials <ArrowRight size={20} />
-          </Link>
+          <Link
+  to="/contact"
+  className="
+    inline-flex items-center justify-center gap-2
+    px-6 py-3 text-base
+    sm:px-12 sm:py-4 sm:text-lg
+    lg:px-24 lg:py-4 lg:text-lg
+    rounded-full
+    bg-foreground text-white
+    font-display font-extrabold
+    hover:scale-105 transition-all shadow-xl
+  "
+>
+  Register for Trials
+  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+</Link>
+
         </div>
       </section>
     </main>

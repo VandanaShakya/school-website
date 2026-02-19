@@ -40,7 +40,7 @@ export default function About() {
             Our <span className="text-primary">Story</span> of Excellence
           </h1>
           <p className="font-body text-xl text-muted-foreground max-w-2xl mx-auto">
-            For over 25 years, BrightMinds Kids School has been shaping futures and inspiring generations of young learners.
+            For over 25 years, Kids School has been shaping futures and inspiring generations of young learners.
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-background" style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }} />
@@ -62,7 +62,7 @@ export default function About() {
               <span className="badge-pill bg-secondary/15 text-secondary mb-4">Who We Are</span>
               <h2 className="section-title mb-5">Dedicated to <span className="text-secondary">Every Child's</span> Success</h2>
               <p className="font-body text-foreground/70 leading-relaxed mb-4">
-                BrightMinds Kids School was founded in 1999 with a simple belief: every child deserves an education that is engaging, inspiring, and transformative. Today, we serve over 2,500 students from kindergarten through high school.
+                 Kids School was founded in 1999 with a simple belief: every child deserves an education that is engaging, inspiring, and transformative. Today, we serve over 2,500 students from kindergarten through high school.
               </p>
               <p className="font-body text-foreground/70 leading-relaxed mb-6">
                 Our dedicated team of 150+ educators brings passion, expertise, and innovation to the classroom every day. We don't just teach — we mentor, guide, and celebrate each unique learner.
@@ -139,7 +139,7 @@ export default function About() {
             ))}
           </div>
           <div className="rounded-3xl overflow-hidden shadow-card-lg">
-            <img src={staffImg} alt="BrightMinds Staff Team" className="w-full h-64 object-cover object-top" />
+            <img src={staffImg} alt="BrightMinds Staff Team" className="w-full h-full object-cover object-top" />
           </div>
         </div>
       </section>
