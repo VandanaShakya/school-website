@@ -1,6 +1,8 @@
 import React from 'react';
 import { Facebook, Globe, Twitter, Mail, MapPin, Phone, ChevronRight } from 'lucide-react';
 import patternBg from '../assets/footer/footer-bg.png';
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
   return (
@@ -56,12 +58,27 @@ const Footer = () => {
           <div className="flex flex-col">
             <h3 className="text-xl font-bold mb-6 md:mb-8 border-b border-white/10 pb-2 w-fit">About School</h3>
             <ul className="space-y-4 text-sm font-medium">
-              {['General Information', 'Who We Are', 'Our Teachers', 'School History', 'Specialized Programme', 'Language Training'].map((item) => (
-                <li key={item} className="flex items-center gap-2 group cursor-pointer w-fit">
-                  <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform text-indigo-300" />
-                  <span className="opacity-90 group-hover:opacity-100">{item}</span>
-                </li>
-              ))}
+            {['Bright Classrooms', 'Lab and Library', 'Meeting Hall', 'Play Ground', 'Sports Club']
+  .map((item) => {
+    const slug = item.toLowerCase().replace(/\s+/g, '-');
+
+    return (
+      <li key={item} className="w-fit">
+        <Link
+          to={`/facilities/${slug}`}
+          className="flex items-center gap-2 group cursor-pointer"
+        >
+          <ChevronRight
+            size={14}
+            className="group-hover:translate-x-1 transition-transform text-indigo-300"
+          />
+          <span className="opacity-90 group-hover:opacity-100">
+            {item}
+          </span>
+        </Link>
+      </li>
+    );
+  })}
             </ul>
           </div>
 

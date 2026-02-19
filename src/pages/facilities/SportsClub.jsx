@@ -51,12 +51,24 @@ const SportsClub = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-               <button className="px-10 py-10 bg-school-yellow text-foreground font-display font-black rounded-full hover:scale-105 transition-all shadow-xl">
-                 JOIN THE SQUAD
-               </button>
-               <button className="px-10 py-5 border-2 border-white text-white font-display font-bold rounded-full hover:bg-white/10 transition-all">
-                 VIEW FIXTURES
-               </button>
+            <button className="px-4 py-2 text-sm
+                     sm:px-8 sm:py-3 sm:text-base
+                     bg-school-yellow text-foreground 
+                     font-display font-black 
+                     rounded-full hover:scale-105 
+                     transition-all shadow-xl whitespace-nowrap">
+    JOIN THE SQUAD
+  </button>
+
+  <button className="px-4 py-2 text-sm
+                     sm:px-8 sm:py-3 sm:text-base
+                     border-2 border-white text-white 
+                     font-display font-bold 
+                     rounded-full hover:bg-white/10 
+                     transition-all whitespace-nowrap">
+    VIEW FIXTURES
+  </button>
+
             </div>
           </div>
         </div>

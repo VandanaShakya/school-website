@@ -29,7 +29,7 @@ const LabAndLibrary = () => {
           alt="School Library and Lab" 
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/60" />
+        <div className="absolute inset-0 bg-foreground/60 " />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <span className="badge-pill bg-white text-school-blue mb-4 inline-block font-bold">
             Hub of Innovation
